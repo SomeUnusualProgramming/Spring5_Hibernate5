@@ -2,7 +2,6 @@ package com.spring.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.spring.model.Client;
 import com.spring.model.User;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -33,18 +32,5 @@ public class HibernateConfig {
 		return transactionManager;
 	}
 
-	@Bean
-    public LocalSessionFactoryBean getSessionFactoryC() {
-        LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
-        factoryBean.setConfigLocation(context.getResource("classpath:hibernate.cfg.xml"));
-        factoryBean.setAnnotatedClasses(Client.class);
-        return factoryBean;
-	}
 	
-	@Bean
-	public HibernateTransactionManager getTransactionManagerC() {
-		HibernateTransactionManager transactionManager = new HibernateTransactionManager();
-		transactionManager.setSessionFactory(getSessionFactoryC().getObject());
-		return transactionManager;
-	}
 }
